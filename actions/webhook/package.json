@@ -1,0 +1,10 @@
+{
+  "name": "webhook",
+  "private": true,
+  "fluct": {
+    "contentType": "application/json",
+    "httpMethod": "POST",
+    "path": "/webhook",
+    "statusCode": 200
+  }
+}

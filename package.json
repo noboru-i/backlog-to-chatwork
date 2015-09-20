@@ -2,8 +2,12 @@
   "name": "backlog-to-chatwork",
   "private": true,
   "fluct": {
-    "accountId": "WRITE_YOUR_AWS_ACCOUNT_ID",
-    "restapiId": null,
-    "roleName": "WRITE_IAM_ROLE_NAME"
+    "accountId": "913828629940",
+    "restapiId": "dg7a5vcby6",
+    "roleName": "lambda_exec_role"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.2.3",
+    "request": "^2.62.0"
   }
 }

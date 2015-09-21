@@ -11,10 +11,11 @@
     "request": "^2.62.0"
   },
   "devDependencies": {
+    "babel": "^5.8.23",
     "mocha": "^2.3.3",
     "rewire": "^2.3.4"
   },
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha --recursive --compilers js:babel/register"
   }
 }

@@ -9,5 +9,12 @@
   "dependencies": {
     "config": "^1.16.0",
     "request": "^2.62.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "rewire": "^2.3.4"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
   }
 }

@@ -12,10 +12,12 @@
   },
   "devDependencies": {
     "babel": "^5.8.23",
+    "fluct": "^0.3.4",
     "mocha": "^2.3.3",
     "rewire": "^2.3.4"
   },
   "scripts": {
-    "test": "NODE_ENV=test mocha --recursive --compilers js:babel/register"
+    "test": "NODE_ENV=test mocha --recursive --compilers js:babel/register",
+    "deploy": "fluct deploy"
   }
 }

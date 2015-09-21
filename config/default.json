@@ -1,9 +1,9 @@
 {
   "chatwork": {
-    "apiKey": "XXX",
-    "roomId": "XXX"
+    "apiKey": "INPUT_YOUR_CHATWORK_API_KEY",
+    "roomId": "INPUT_YOUR_CHATWORK_ROOM_ID"
   },
   "backlog": {
-    "url": "https://XXX.backlog.jp/"
+    "url": "INPUT_YOUR_BACKLOG_URL"
   }
 }

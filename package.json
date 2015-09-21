@@ -7,7 +7,7 @@
     "roleName": "lambda_exec_role"
   },
   "dependencies": {
-    "aws-sdk": "^2.2.3",
+    "config": "^1.16.0",
     "request": "^2.62.0"
   }
 }

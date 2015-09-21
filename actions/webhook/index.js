@@ -1,9 +1,10 @@
+var config = require('config');
 var request = require('request');
 
 // constants
-var CHATWORK_API_KEY = 'XXX';
-var ROOM_ID = 'XXX';
-var BACKLOG_URL = 'https://XXX.backlog.jp/';
+var CHATWORK_API_KEY = config.chatwork.apiKey;
+var ROOM_ID = config.chatwork.roomId;
+var BACKLOG_URL = config.backlog.url;
 
 function create_link(event, content) {
   var url = BACKLOG_URL + "view/" + event.project.projectKey + "-" + content.key_id;

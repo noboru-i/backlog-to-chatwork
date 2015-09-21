@@ -3,8 +3,6 @@ var rewire = require('rewire');
 
 var subject = rewire('../../actions/webhook/index.js');
 
-subject.__set__('BACKLOG_URL', 'http://foo.backlog.jp/');
-
 describe('#create_link()', () => {
   var create_link = subject.__get__('create_link');
 

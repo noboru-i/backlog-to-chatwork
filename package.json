@@ -16,6 +16,6 @@
     "rewire": "^2.3.4"
   },
   "scripts": {
-    "test": "mocha --recursive --compilers js:babel/register"
+    "test": "NODE_ENV=test mocha --recursive --compilers js:babel/register"
   }
 }

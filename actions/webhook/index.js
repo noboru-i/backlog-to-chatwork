@@ -35,11 +35,11 @@ function create_message(event) {
   return "unknown event type: " + event.type;
 }
 
-function post_to_chatwork(message, callback) {
+function post_to_chatwork(room_id, message, callback) {
   var url = 'https://api.chatwork.com/v1';
 
   var options = {
-    url: url + "/rooms/" + ROOM_ID + "/messages",
+    url: url + "/rooms/" + room_id + "/messages",
     headers : {
       'X-ChatWorkToken': CHATWORK_API_KEY
     },
@@ -61,7 +61,7 @@ exports.handler = function(event, context) {
   var message = create_message(event.requestParameters);
   console.log('send message: ' + message);
 
-  post_to_chatwork(message, function(error, response, body) {
+  post_to_chatwork(ROOM_ID, message, function(error, response, body) {
     console.log('response body: ' + body);
 
     console.log('end event');

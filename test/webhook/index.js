@@ -40,3 +40,48 @@ describe('#create_links()', () => {
     assert.deepEqual(create_links(event_obj, link), ["http://foo.backlog.jp/view/KEY-1234", "http://foo.backlog.jp/view/KEY-2345"]);
   });
 });
+
+describe('#create_message()', () => {
+  var create_message = subject.__get__('create_message');
+  var template_event = {
+    'type': 0,
+    'project': {
+      'projectKey': 'KEY'
+    },
+    'content': {
+      'key_id': 1234,
+      'summary': 'message',
+      'comment': {
+        'content': 'content'
+      }
+    },
+    'createdUser': {
+      'name': 'user_name'
+    }
+  };
+
+  it('should return creation message when type is 1.', () => {
+    var event = template_event;
+    event.type = 1;
+    assert.equal(create_message(event), '[info][title]user_nameが「message」を追加しました。[/title]http://foo.backlog.jp/view/KEY-1234[/info]');
+  });
+  it('should return updation message when type is 2.', () => {
+    var event = template_event;
+    event.type = 2;
+    assert.equal(create_message(event), '[info][title]user_nameが「message」を更新しました。[/title]http://foo.backlog.jp/view/KEY-1234\n\ncontent[/info]');
+  });
+  it('should return updation message when type is 3.', () => {
+    var event = template_event;
+    event.type = 3;
+    assert.equal(create_message(event), '[info][title]user_nameが「message」を更新しました。[/title]http://foo.backlog.jp/view/KEY-1234\n\ncontent[/info]');
+  });
+  it('should return bulk updation message when type is 14.', () => {
+    var event = template_event;
+    event.type = 14;
+    event.content.link = [
+      event.content,
+      event.content
+    ];
+    assert.equal(create_message(event), '[info][title]user_nameが課題をまとめて更新しました。[/title]http://foo.backlog.jp/view/KEY-1234\nhttp://foo.backlog.jp/view/KEY-1234[/info]');
+  });
+});

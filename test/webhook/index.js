@@ -1,5 +1,6 @@
-var assert = require("assert");
+var assert = require('assert');
 var rewire = require('rewire');
+var sinon = require('sinon');
 
 var subject = rewire('../../actions/webhook/index.js');
 
@@ -83,5 +84,26 @@ describe('#create_message()', () => {
       event.content
     ];
     assert.equal(create_message(event), '[info][title]user_nameが課題をまとめて更新しました。[/title]http://foo.backlog.jp/view/KEY-1234\nhttp://foo.backlog.jp/view/KEY-1234[/info]');
+  });
+});
+
+describe('#post_to_chatwork()', () => {
+  var post_to_chatwork = subject.__get__('post_to_chatwork');
+  var request = require('request');
+  before((done) => {
+    sinon
+      .stub(request, 'post')
+      .yields(null, {'statusCode': 200}, {"result": "ok"});
+    done();
+  });
+  after((done) => {
+    request.post.restore();
+    done();
+  });
+
+  it('should callback', () => {
+    post_to_chatwork("1234", "message", (error, response, body) => {
+      assert.equal(body.result, "ok");
+    });
   });
 });

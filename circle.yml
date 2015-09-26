@@ -11,3 +11,4 @@ deployment:
       - rm config/default.json
       - aws s3 sync s3://backlog-to-chatwork/default.json config/
       - npm run deploy
+      - cp actions/webhook/lambda.zip $CIRCLE_ARTIFACTS

@@ -107,3 +107,11 @@ describe('#post_to_chatwork()', () => {
     });
   });
 });
+
+describe('#find_room_id()', () => {
+  var find_room_id = subject.__get__('find_room_id');
+
+  it('should return room_id', () => {
+    assert.equal(find_room_id('TEST1'), '11111');
+  });
+});

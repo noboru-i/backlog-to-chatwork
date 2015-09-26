@@ -1,9 +1,18 @@
 {
   "chatwork": {
-    "apiKey": "XXXXXXXX",
-    "roomId": "XXXX"
+    "apiKey": "XXXXXXXX"
   },
   "backlog": {
     "url": "http://foo.backlog.jp/"
-  }
+  },
+  "mapping": [
+    {
+      "project_key": "TEST1",
+      "room_id": "11111"
+    },
+    {
+      "project_key": "TEST2",
+      "room_id": "22222"
+    }
+  ]
 }

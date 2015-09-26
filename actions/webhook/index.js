@@ -53,7 +53,16 @@ function post_to_chatwork(room_id, message, callback) {
     }
     callback(error, response, body);
   });
+}
 
+function find_room_id(project_key) {
+  var room_id = null;
+  config.mapping.forEach(function(element) {
+    if (project_key == element.project_key) {
+      room_id = element.room_id;
+    }
+  });
+  return room_id;
 }
 
 exports.handler = function(event, context) {
@@ -61,7 +70,9 @@ exports.handler = function(event, context) {
   var message = create_message(event.requestParameters);
   console.log('send message: ' + message);
 
-  post_to_chatwork(ROOM_ID, message, function(error, response, body) {
+  var room_id = find_room_id(event.project.projectKey);
+
+  post_to_chatwork(room_id, message, function(error, response, body) {
     console.log('response body: ' + body);
 
     console.log('end event');

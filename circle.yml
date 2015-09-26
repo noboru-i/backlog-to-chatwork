@@ -9,6 +9,6 @@ deployment:
     branch: master
     commands:
       - rm config/default.json
-      - aws s3 sync s3://backlog-to-chatwork config/
+      - aws s3 sync s3://$BUCKET_NAME config/
       - npm run deploy
       - cp actions/webhook/lambda.zip $CIRCLE_ARTIFACTS

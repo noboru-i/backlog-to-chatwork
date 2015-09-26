@@ -8,5 +8,6 @@ deployment:
   production:
     branch: master
     commands:
+      - rm config/default.json
       - aws s3 sync s3://backlog-to-chatwork/default.json config/default.json
       - npm run deploy

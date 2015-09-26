@@ -71,6 +71,10 @@ exports.handler = function(event, context) {
   console.log('send message: ' + message);
 
   var room_id = find_room_id(event.requestParameters.project.projectKey);
+  if (!room_id) {
+    context.fail();
+    return;
+  }
 
   post_to_chatwork(room_id, message, function(error, response, body) {
     console.log('response body: ' + body);

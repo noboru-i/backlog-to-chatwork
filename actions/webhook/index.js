@@ -70,7 +70,7 @@ exports.handler = function(event, context) {
   var message = create_message(event.requestParameters);
   console.log('send message: ' + message);
 
-  var room_id = find_room_id(event.project.projectKey);
+  var room_id = find_room_id(event.requestParameters.project.projectKey);
 
   post_to_chatwork(room_id, message, function(error, response, body) {
     console.log('response body: ' + body);
